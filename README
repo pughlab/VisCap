@@ -8,4 +8,5 @@ Run command line for linux:
 
 Rscript VisCap.R VisCap.cfg  /path/to/lane_dir  /path/to/output_dir
 
-Note: The lane_dir is where the Depth of covrage files from Gatk DepthOfCoverage tool sit in. The output directory is where you want the output results go.
+Note: The lane_dir is where the Depth of covrage files from Gatk DepthOfCoverage tool sit in. The output directory is
+where you want the output results to be saved in.
