@@ -1,3 +1,6 @@
+# Documentation
+For updated and more detailed documentation, please refer to our Github Wiki page at https://github.com/pughlab/VisCap/wiki
+
 # Introduction
 VisCap is a copy number detection and visualization tool written in R (www.r-project.org) for analysis of next-generation sequencing data derived from hybrid-capture experiments. It requires installation of the R libraries "gplots", "zoo", and “cluster”. We reported validation of this algorithm for detection of germline variation in Genetics in Medicine:  
 
