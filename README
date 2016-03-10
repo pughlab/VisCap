@@ -1,10 +1,8 @@
-Windows users:
+Run command for Windows users:
 
+RTerm.exe --file=VisCap.R --args [path to directory containing interval list files]
 
-
-Linux users:
-
-Run command line for linux:
+Run command for Linux users:
 
 Rscript VisCap.R VisCap.cfg  /path/to/lane_dir  /path/to/output_dir
 
