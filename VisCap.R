@@ -97,7 +97,7 @@ make_matrix_from_cov_files <- function(lane_dir, cov_file_pattern, cov_field) {
 load_interval_names <- function(interval_list_dir, interval_file_pattern) {
     #Read interval list files and make lookup_table for genome coords and interval names
     lookup = c()
-    filenames = list.files(interval_list_dir, full.names=TRUE, pattern=interval_file_pattern, recursive=TRUE)
+    filenames = list.files(interval_list_dir, full.names=TRUE, pattern=interval_file_pattern, recursive=FALSE)
     for(file in filenames) {
         tab = read.table(file, header=FALSE, comment.char = "@", stringsAsFactors=FALSE)
         colnames(tab) <- c("chr", "start", "end", "strand", "interval_name")
