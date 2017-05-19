@@ -24,16 +24,16 @@ out_dir                     <- "\\\\rfanfs.research.partners.org\\gigpad_clinica
 
 # interval_list_dir           <- "\\\\Sfa6\\lmm$\\DEVELOPMENT\\ACTIVE_DEVELOPMENT\\NEXT_GEN_COPY_NUMBER\\VisCap\\interval_lists"   
 explorer_file               <- "C:\\Windows\\explorer.exe"
-cov_file_pattern            <- ".target.cov.sample_interval_summary$"
-cov_field                   <- "_total_cvg"
-interval_file_pattern       <- ".interval_list$"
-ylimits                     <- c(-2, 2)
-iqr_multiplier              <- 3
-threshold.min_exons         <- 1
-threshold.cnv_log2_cutoffs  <- c(-0.55, 0.40)
-iterative.calling.limit     <- 0        #Set to 0 to iterate until all failed samples are removed
-infer.batch.for.sub.out_dir <- TRUE     #Set to FALSE to prompt users for output directory
-clobber.output.directory    <- FALSE    #Set to FALSE to stop run when output directory already exists
+#cov_file_pattern            <- ".target.cov.sample_interval_summary$"
+#cov_field                   <- "_total_cvg"
+#interval_file_pattern       <- ".interval_list$"
+#ylimits                     <- c(-2, 2)
+#iqr_multiplier              <- 3
+#threshold.min_exons         <- 1
+#threshold.cnv_log2_cutoffs  <- c(-0.55, 0.40)
+#iterative.calling.limit     <- 0        #Set to 0 to iterate until all failed samples are removed
+#infer.batch.for.sub.out_dir <- TRUE     #Set to FALSE to prompt users for output directory
+#clobber.output.directory    <- FALSE    #Set to FALSE to stop run when output directory already exists
 
 #Setting a path to data skips prompts. Set to FALSE for deployment.
 #dev_dir    <- "\\\\Sfa6\\lmm$\\DEVELOPMENT\\ACTIVE_DEVELOPMENT\\NEXT_GEN_COPY_NUMBER\\VisCap\\test_data"
