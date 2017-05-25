@@ -60,7 +60,7 @@ make_matrix_from_cov_files <- function(lane_dir, cov_file_pattern, cov_field) {
     filenames <- list.files(lane_dir, full.names=TRUE, pattern=cov_file_pattern, recursive=TRUE)
     print(filenames)
     for(file in filenames) {
-        tab      <- read.table(file, header=TRUE, row.names=1)
+        tab      <- read.table(file, header=TRUE, sep ="\t", row.names=1)
         col_name <- colnames(tab)[grep(cov_field, colnames(tab))]
 
         #Make new matrix labelled with appropriate identifier
