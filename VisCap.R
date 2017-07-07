@@ -15,17 +15,16 @@ library("zoo")
 ##########
 
 svn.revision                <- "$Id: VisCap.R 1372 2013-04-25 13:53:52Z tp908 $"
+source('VisCap.cfg')
 #lane_dir                    <- "\\\\rfanfs.research.partners.org\\NGS"
 #out_dir                     <- "\\\\rfanfs.research.partners.org\\gigpad_clinical\\Facilities\\Laboratory of Molecular Medicine_4171303\\VisCap_Outputs"
 
-lane_dir                    <- "\\\\rfanfs.research.partners.org\\NGS"
-out_dir                     <- "\\\\rfanfs.research.partners.org\\gigpad_clinical\\Facilities\\Laboratory of Molecular Medicine_4171303\\VisCap_Outputs"
-
-
+#lane_dir                    <- "\\\\rfanfs.research.partners.org\\NGS"
+#out_dir                     <- "\\\\rfanfs.research.partners.org\\gigpad_clinical\\Facilities\\Laboratory of Molecular Medicine_4171303\\VisCap_Outputs"
 # interval_list_dir           <- "\\\\Sfa6\\lmm$\\DEVELOPMENT\\ACTIVE_DEVELOPMENT\\NEXT_GEN_COPY_NUMBER\\VisCap\\interval_lists"   
-explorer_file               <- "C:\\Windows\\explorer.exe"
-cov_file_pattern            <- ".target.cov.sample_interval_summary$"
-cov_field                   <- "_total_cvg"
+#explorer_file               <- "C:\\Windows\\explorer.exe"
+#cov_file_pattern            <- ".target.cov.sample_interval_summary$"
+#cov_field                   <- "_total_cvg"
 #interval_file_pattern       <- ".interval_list$"
 #ylimits                     <- c(-2, 2)
 #iqr_multiplier              <- 3
@@ -98,8 +97,8 @@ load_interval_names <- function(interval_list_dir, interval_file_pattern) {
     lookup = c()
     filenames = list.files(interval_list_dir, full.names=TRUE, pattern=interval_file_pattern, recursive=TRUE)
     for(file in filenames) {
-        tab = read.table(file, header=FALSE, comment.char = "@", stringsAsFactors=FALSE)
-        colnames(tab) <- c("chr", "start", "end", "strand", "interval_name")
+        tab = read.table(file, header=FALSE, comment.char = "@", sep="\t", stringsAsFactors=FALSE)
+        colnames(tab) <- c("chr", "start", "end", "interval_name")
         rownames(tab) <- paste(tab$chr, ":", tab$start, "-", tab$end, sep = "")
         tab$interval_file <- file
         lookup <- rbind(lookup, tab)
@@ -545,7 +544,7 @@ if(length(arguments) == 1) {
     #Uses provided command line arguments
     lane_dir <- arguments[1]
     out_dir  <- arguments[2]
-    interval_list_dir <- arguments[3]
+    viscap.cfg <- arguments[3]
     batch    <- basename(out_dir)
 } else {
     #Usage statement
