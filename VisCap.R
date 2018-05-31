@@ -98,6 +98,8 @@ load_interval_names <- function(interval_list_dir, interval_file_pattern) {
     filenames = list.files(interval_list_dir, full.names=TRUE, pattern=interval_file_pattern, recursive=FALSE)
     for(file in filenames) {
         tab = read.table(file, header=FALSE, comment.char = "@", sep="\t", stringsAsFactors=FALSE)
+	if(ncol(tab) < 4)
+	{stop("The interval file should have at least 4 columns, chromosome, start, end, and interval name, all tab separated.")}
         colnames(tab) <- c("chr", "start", "end", "interval_name")
         rownames(tab) <- paste(tab$chr, ":", tab$start, "-", tab$end, sep = "")
         tab$interval_file <- file
