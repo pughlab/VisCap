@@ -136,7 +136,7 @@ heatmap_by_chrom <- function(mat, analysis_name, ylimits, out_dir) {
 	pdf(file=paste(out_dir, "/", analysis_name, ".pdf", sep=""))
 
     #Per-chromosome plots
-	if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c("all",paste("chr",1:22,sep=""),"X","Y", "MT", "M")}else{chroms = c("all", 1:22,"X","Y", "MT", "M")}
+	if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c("all",paste("chr",1:22,sep=""),"chrX","chrY", "chrMT", "chrM")}else{chroms = c("all", 1:22,"X","Y", "MT", "M")}
 	for(chr in chroms){
         if(chr == "all") {
             main_title <- "All Chromosomes"
@@ -255,7 +255,7 @@ call_cnvs <- function(nmat, ylimits, interval_lookup, threshold.min_exons, iqr_m
     for(id in colnames(nmat_cnvs)) {
         segs <- c()
         segs.header <- c("Sample", "CNV", "Genome_start_interval", "Genome_end_interval", "Start_interval","End_interval", "Interval_count", "Min_log2ratio", "Median_log2ratio", "Max_log2ratio", "Loss_threshold", "Gain_threshold", "Batch_size")
-        if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c(paste("chr",1:22,sep=""),"X","Y", "MT", "M")}else{chroms = c(1:22,"X","Y", "MT", "M")}
+        if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c(paste("chr",1:22,sep=""),"chrX","chrY", "chrMT", "chrM")}else{chroms = c(1:22,"X","Y", "MT", "M")}
         for(chr in chroms){
             matches <- grep(paste("^",chr,":",sep=""), rownames(nmat))
             if(length(matches) > 1) {
@@ -347,7 +347,7 @@ exon_plot_per_sample <- function(nmat, ylimits, interval_lookup, cnv_bplot_and_c
 
         #Plot all intervals, then plot by chromosome
         pdf(file=paste(out_dir, "/", name, ".plot.pdf", sep=""))                 
-		if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c(".*",paste("chr",1:22,sep=""),"X","Y")}else{chroms = c(".*", 1:22,"X","Y")}
+		if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c(".*",paste("chr",1:22,sep=""),"chrX","chrY")}else{chroms = c(".*", 1:22,"X","Y")}
 		for(chr in chroms) {
             #Grep rownames with genome coordinates for desired chromosome, support chr1: and 1: formats
 			matches <- grep(paste("(^chr", chr, "|^", chr, "):", sep=""), rownames(nmat))
@@ -566,7 +566,7 @@ mat.all[which(mat.all==0)]=0.00001
 interval_lookup <- load_interval_names(interval_list_dir, interval_file_pattern)
 
 # Sort matrix by genome coordinates found in rownames
-chroms <- c(paste("chr",1:22,sep=""),"X","Y", "MT", "M")}else{chroms <- c(1:22,"X","Y", "MT", "M")}
+chroms <- c(paste("chr",1:22,sep=""),"chrX","chrY", "chrMT", "chrM")}else{chroms <- c(1:22,"X","Y", "MT", "M")}
 chroms <- factor(chroms, levels=chroms, labels=chroms, ordered=TRUE)
 coords <- matrix(unlist(strsplit(rownames(mat.all), ":|-")), ncol=3, byrow=TRUE, dimnames=list(rownames(mat.all)))
 coords <- coords[order(match(coords[,1], chroms), as.numeric(coords[,2]), as.numeric(coords[,3])),]
