@@ -565,8 +565,7 @@ mat.all[which(mat.all==0)]=0.00001
 # Read interval name files
 interval_lookup <- load_interval_names(interval_list_dir, interval_file_pattern)
 
-# Sort matrix by genome coordinates found in rownames
-		    
+# Sort matrix by genome coordinates found in rownames	    
 if(length(interval_lookup$chr[grep("chr",interval_lookup$chr)])!=0){chroms <- c(paste("chr",1:22,sep=""),"chrX","chrY", "chrMT", "chrM")}else{chroms <- c(1:22,"X","Y", "MT", "M")}
 chroms <- factor(chroms, levels=chroms, labels=chroms, ordered=TRUE)
 coords <- matrix(unlist(strsplit(rownames(mat.all), ":|-")), ncol=3, byrow=TRUE, dimnames=list(rownames(mat.all)))
